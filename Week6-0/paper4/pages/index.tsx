@@ -2,33 +2,48 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import useEnsData from "../hooks/useEns";
-import abi from "../contract/contract.json";
+import ABI from "../contract/contract.json";
 import { useContractRead, useContractWrite, usePrepareContractWrite } from 'wagmi'
 import { useEffect, useState } from "react";
 
-//0xceb3A1a074952a81bf3Adf95cBedBD5fd1Ce7b64
 const Home: NextPage = () => {
-  const { ensData } = useEnsData(undefined);
-  const [Switch, setSwitch] = useState(false);
-  const { data, isError, isLoading } = useContractRead({
+  //const { ensData } = useEnsData(undefined);
+  const [store, setStore] = useState(false);
+  const [save, setSave] = useState(false);
+  const { data: SwitchData, isError, isLoading } = useContractRead({
     address: '0xceb3A1a074952a81bf3Adf95cBedBD5fd1Ce7b64',
-    abi: abi,
+    abi: ABI,
     functionName: 'retrieve',
     onSuccess(data) {
-
-      setSwitch(data)
-      console.log('ok', data, Switch)
+      setStore(data)
     }
   })
-
-  const contractWrite = useContractWrite({
-    mode: 'recklesslyUnprepared',
+  const { config: contractMintWriteConfig } = usePrepareContractWrite({
     address: '0xceb3A1a074952a81bf3Adf95cBedBD5fd1Ce7b64',
-    abi: abi,
+    abi: [
+      {
+        name: 'store',
+        type: 'function',
+        stateMutability: 'nonpayable',
+        inputs: [{ internalType: 'bool', name: '_v', type: 'bool' }],
+        outputs: [],
+      },
+    ],
     functionName: 'store',
-    args: [],
-  })
+    args: [store],
+  });
+  useEffect(() => {
+    if (save) {
+      storeWrite?.()
+      setSave(false)
+    }
+  }, [store]);
+  const {
+    write: storeWrite,
+    isLoading: isStoreLoading,
+    isSuccess: isStoreStarted,
+    error: StoreError,
+  } = useContractWrite(contractMintWriteConfig);
   return (
     <div className={styles.container}>
       <Head>
@@ -42,16 +57,25 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <ConnectButton />
-        <h6>Address:{ensData.address}</h6>
-        <h6>ENSName:{ensData.ensName}</h6>
         <div>
           <input type="radio" id="huey" name="drone" value="true"
-            checked={Switch === true} />
+            checked={store === true}
+            onChange={(e) => {
+              setStore(true)
+              setSave(true)
+            }}
+          />
           <label>true</label>
         </div>
 
         <div>
-          <input type="radio" id="dewey" name="drone" value="false" checked={Switch === false} />
+          <input type="radio" id="dewey" name="drone" value="false"
+            checked={store === false}
+            onChange={(e) => {
+              setStore(false)
+              setSave(true)
+            }}
+          />
           <label>false</label>
         </div>
       </main>
