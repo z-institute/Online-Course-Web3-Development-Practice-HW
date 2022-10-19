@@ -22,6 +22,7 @@ const Home: NextPage = () => {
         <ConnectButton />
         <h6>Address:{ensData.address}</h6>
         <h6>ENSName:{ensData.ensName}</h6>
+        <h6>ENSDescription:{ensData.description}</h6>
       </main>
 
       <footer className={styles.footer}>

@@ -10,16 +10,20 @@ const Home: NextPage = () => {
   //const { ensData } = useEnsData(undefined);
   const [store, setStore] = useState(false);
   const [save, setSave] = useState(false);
-  const { data: SwitchData, isError, isLoading } = useContractRead({
-    address: '0xceb3A1a074952a81bf3Adf95cBedBD5fd1Ce7b64',
+  const [name, setName] = useState('');
+
+
+  // switch
+  const { data: SwitchData, isError: isSwitchError, isLoading: isSwitchLoading } = useContractRead({
+    address: '0x8809e8D5e43C43C2A1C8566d6d964d9bF5D13F0D',
     abi: ABI,
     functionName: 'retrieve',
     onSuccess(data) {
-      setStore(data)
+      setStore(data as boolean)
     }
   })
-  const { config: contractMintWriteConfig } = usePrepareContractWrite({
-    address: '0xceb3A1a074952a81bf3Adf95cBedBD5fd1Ce7b64',
+  const { config: contractSwitchWriteConfig } = usePrepareContractWrite({
+    address: '0x8809e8D5e43C43C2A1C8566d6d964d9bF5D13F0D',
     abi: [
       {
         name: 'store',
@@ -32,18 +36,61 @@ const Home: NextPage = () => {
     functionName: 'store',
     args: [store],
   });
+
+  const {
+    write: storeWrite,
+    isLoading: isStoreLoading,
+    isSuccess: isStoreStarted,
+    error: StoreError,
+  } = useContractWrite(contractSwitchWriteConfig);
+
   useEffect(() => {
     if (save) {
       storeWrite?.()
       setSave(false)
     }
   }, [store]);
+
+  // name
+  const { data: NameData, isError: isNameError, isLoading: isNameLoading } = useContractRead({
+    address: '0x8809e8D5e43C43C2A1C8566d6d964d9bF5D13F0D',
+    abi: ABI,
+    functionName: 'getName',
+    onSuccess(data) {
+      console.log(data)
+      setName(data as string)
+    }
+  })
+  const { config: contractNameWriteConfig } = usePrepareContractWrite({
+    address: '0x8809e8D5e43C43C2A1C8566d6d964d9bF5D13F0D',
+    abi: [
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_name",
+            "type": "string"
+          }
+        ],
+        "name": "setName",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ],
+    functionName: 'setName',
+    args: [name],
+  });
+
   const {
-    write: storeWrite,
-    isLoading: isStoreLoading,
-    isSuccess: isStoreStarted,
-    error: StoreError,
-  } = useContractWrite(contractMintWriteConfig);
+    write: nameWrite
+  } = useContractWrite(contractNameWriteConfig);
+
+  function handleSetName() {
+    nameWrite?.()
+  }
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -77,6 +124,12 @@ const Home: NextPage = () => {
             }}
           />
           <label>false</label>
+        </div>
+
+        <div>
+          <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+          <label>name: </label>
+          <button onClick={handleSetName}>submit</button>
         </div>
       </main>
 
