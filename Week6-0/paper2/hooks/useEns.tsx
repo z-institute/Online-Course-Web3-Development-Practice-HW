@@ -7,7 +7,8 @@ interface IensData {
   twitter?: string,
   github?: string,
   avatarUrl?: string,
-  websiteUrl?: string
+  websiteUrl?: string,
+  description?: string,
 }
 const useEns = (_addr?: string) => {
   const { address } = useAccount();
@@ -34,6 +35,7 @@ const useEns = (_addr?: string) => {
     const github = await resolver.getText("com.github");
     const avatarUrl = await resolver.getText("avatar");
     const websiteUrl = await resolver.getText("url");
+    const description = await resolver.getText('description');
 
     setEnsData({
       ensName: _ensName,
@@ -43,6 +45,7 @@ const useEns = (_addr?: string) => {
       avatarUrl,
       websiteUrl,
       address,
+      description,
     });
   }
 

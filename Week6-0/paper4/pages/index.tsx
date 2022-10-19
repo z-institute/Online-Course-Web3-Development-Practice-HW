@@ -6,20 +6,33 @@ import ABI from "../contract/contract.json";
 import { useContractRead, useContractWrite, usePrepareContractWrite } from 'wagmi'
 import { useEffect, useState } from "react";
 
+const contractAddress = '0x1FBF91BcB3e53d75CE736B393368eE627eE1dc30';
+
 const Home: NextPage = () => {
   //const { ensData } = useEnsData(undefined);
   const [store, setStore] = useState(false);
   const [save, setSave] = useState(false);
+  const [userInput, setUserInput] = useState('');
   const { data: SwitchData, isError, isLoading } = useContractRead({
-    address: '0xceb3A1a074952a81bf3Adf95cBedBD5fd1Ce7b64',
+    address: contractAddress,
     abi: ABI,
     functionName: 'retrieve',
     onSuccess(data) {
       setStore(data)
     }
   })
+  const { data: nameData, refetch } = useContractRead({
+    address: contractAddress,
+    abi: ABI,
+    functionName: 'viewName',
+    staleTime: 500,
+    onSuccess(data) {
+      //setStore(data)
+      console.log('viewName data, ', nameData);
+    }
+  })
   const { config: contractMintWriteConfig } = usePrepareContractWrite({
-    address: '0xceb3A1a074952a81bf3Adf95cBedBD5fd1Ce7b64',
+    address: contractAddress,
     abi: [
       {
         name: 'store',
@@ -32,6 +45,18 @@ const Home: NextPage = () => {
     functionName: 'store',
     args: [store],
   });
+  const { config: setNameConfig } = usePrepareContractWrite({
+    address: contractAddress,
+    abi: ABI,
+    functionName: 'setName',
+    args: [userInput],
+  });
+  const {
+    write: writeName,
+    // isLoading: isStoreLoading,
+    // isSuccess: isStoreStarted,
+    // error: StoreError,
+  } = useContractWrite(setNameConfig);
   useEffect(() => {
     if (save) {
       storeWrite?.()
@@ -44,6 +69,20 @@ const Home: NextPage = () => {
     isSuccess: isStoreStarted,
     error: StoreError,
   } = useContractWrite(contractMintWriteConfig);
+
+  const buttonHandler = () => {
+    console.log('user input ', userInput);
+    if (userInput) {
+      writeName?.();
+    }
+    setUserInput('');
+  }
+  const onInputChange = (e) => {
+    setUserInput(e.target.value);
+  }
+  const fetchHandler = () => {
+    refetch();
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -77,6 +116,14 @@ const Home: NextPage = () => {
             }}
           />
           <label>false</label>
+        </div>
+        <div style={{display: 'flex', justifyContent: 'space-between', width: '350px', marginTop: '5px'}}>
+          <div>Name: {nameData}</div>
+          <button onClick={fetchHandler}>Click to fetch name</button>
+        </div>
+        <div style={{display: 'flex', justifyContent: 'space-between', width: '350px', marginTop: '5px'}}>
+            <input placeHolder="type new name" value={userInput} onChange={onInputChange}/>
+            <button onClick={buttonHandler}>Click to set new name</button>
         </div>
       </main>
 
