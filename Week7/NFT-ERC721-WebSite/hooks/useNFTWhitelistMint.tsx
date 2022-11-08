@@ -35,10 +35,10 @@ const getWhiteListData = (address: string) => {
 
 const useNFTWhitelistMint = (mintCount: number) => {
     const { address } = useAccount();
-    // console.log(voucher, signature);
 
     const { voucher, signature, inWhiteList } = getWhiteListData(address || "");
-    // console.log([, mintCount.toString(), address]);
+    console.log([, mintCount.toString(), address]);
+    console.log("voucher ", voucher, "signature ", signature);
 
     const { writeAsync, status, data } = useContractWrite({
         mode: "recklesslyUnprepared",

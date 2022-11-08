@@ -2,6 +2,36 @@ export const ZZNFTABI = [
     {
         inputs: [
             {
+                components: [
+                    {
+                        internalType: "address",
+                        name: "redeemer",
+                        type: "address",
+                    },
+                ],
+                internalType: "struct NFT.NFTVoucher",
+                name: "voucher",
+                type: "tuple",
+            },
+            {
+                internalType: "bytes",
+                name: "signature",
+                type: "bytes",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+        ],
+        name: "_verify",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
                 internalType: "string",
                 name: "_name",
                 type: "string",
@@ -29,6 +59,24 @@ export const ZZNFTABI = [
         inputs: [],
         name: "ApprovalQueryForNonexistentToken",
         type: "error",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
+        ],
+        name: "approve",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
     },
     {
         inputs: [],
@@ -186,6 +234,149 @@ export const ZZNFTABI = [
         type: "event",
     },
     {
+        inputs: [
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "amount",
+                type: "uint256",
+            },
+        ],
+        name: "publicMintFirst",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "amount",
+                type: "uint256",
+            },
+        ],
+        name: "publicMintSecond",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "renounceOwnership",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "amount",
+                type: "uint256",
+            },
+        ],
+        name: "reserve",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
+                name: "from",
+                type: "address",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
+        ],
+        name: "safeTransferFrom",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
+                name: "from",
+                type: "address",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+            {
+                internalType: "uint256",
+                name: "tokenId",
+                type: "uint256",
+            },
+            {
+                internalType: "bytes",
+                name: "_data",
+                type: "bytes",
+            },
+        ],
+        name: "safeTransferFrom",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
+                name: "operator",
+                type: "address",
+            },
+            {
+                internalType: "bool",
+                name: "approved",
+                type: "bool",
+            },
+        ],
+        name: "setApprovalForAll",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "string",
+                name: "baseURI",
+                type: "string",
+            },
+        ],
+        name: "setBaseURI",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
         anonymous: false,
         inputs: [
             {
@@ -211,16 +402,81 @@ export const ZZNFTABI = [
         type: "event",
     },
     {
-        inputs: [],
-        name: "MAX_SUPPLY",
-        outputs: [
+        inputs: [
+            {
+                internalType: "address",
+                name: "from",
+                type: "address",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
             {
                 internalType: "uint256",
-                name: "",
+                name: "tokenId",
                 type: "uint256",
             },
         ],
-        stateMutability: "view",
+        name: "transferFrom",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                internalType: "address",
+                name: "newOwner",
+                type: "address",
+            },
+        ],
+        name: "transferOwnership",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
+                components: [
+                    {
+                        internalType: "address",
+                        name: "redeemer",
+                        type: "address",
+                    },
+                ],
+                internalType: "struct NFT.NFTVoucher",
+                name: "voucher",
+                type: "tuple",
+            },
+            {
+                internalType: "bytes",
+                name: "signature",
+                type: "bytes",
+            },
+            {
+                internalType: "uint256",
+                name: "amount",
+                type: "uint256",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+        ],
+        name: "whitelistMint",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "withdraw",
+        outputs: [],
+        stateMutability: "nonpayable",
         type: "function",
     },
     {
@@ -278,54 +534,6 @@ export const ZZNFTABI = [
             },
         ],
         stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                components: [
-                    {
-                        internalType: "address",
-                        name: "redeemer",
-                        type: "address",
-                    },
-                ],
-                internalType: "struct NFT.NFTVoucher",
-                name: "voucher",
-                type: "tuple",
-            },
-            {
-                internalType: "bytes",
-                name: "signature",
-                type: "bytes",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-        ],
-        name: "_verify",
-        outputs: [],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "approve",
-        outputs: [],
-        stateMutability: "payable",
         type: "function",
     },
     {
@@ -411,6 +619,19 @@ export const ZZNFTABI = [
                 internalType: "bool",
                 name: "",
                 type: "bool",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "MAX_SUPPLY",
+        outputs: [
+            {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
             },
         ],
         stateMutability: "view",
@@ -514,42 +735,6 @@ export const ZZNFTABI = [
         type: "function",
     },
     {
-        inputs: [
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
-            },
-        ],
-        name: "publicMintFirst",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
-            },
-        ],
-        name: "publicMintSecond",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
-    },
-    {
         inputs: [],
         name: "publicMintSecondStartTime",
         outputs: [
@@ -577,27 +762,15 @@ export const ZZNFTABI = [
     },
     {
         inputs: [],
-        name: "renounceOwnership",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
+        name: "recoverSignAddr",
+        outputs: [
             {
                 internalType: "address",
-                name: "to",
+                name: "",
                 type: "address",
             },
-            {
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
-            },
         ],
-        name: "reserve",
-        outputs: [],
-        stateMutability: "nonpayable",
+        stateMutability: "view",
         type: "function",
     },
     {
@@ -611,88 +784,6 @@ export const ZZNFTABI = [
             },
         ],
         stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "safeTransferFrom",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-            {
-                internalType: "bytes",
-                name: "_data",
-                type: "bytes",
-            },
-        ],
-        name: "safeTransferFrom",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "operator",
-                type: "address",
-            },
-            {
-                internalType: "bool",
-                name: "approved",
-                type: "bool",
-            },
-        ],
-        name: "setApprovalForAll",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "string",
-                name: "baseURI",
-                type: "string",
-            },
-        ],
-        name: "setBaseURI",
-        outputs: [],
-        stateMutability: "nonpayable",
         type: "function",
     },
     {
@@ -773,77 +864,6 @@ export const ZZNFTABI = [
         type: "function",
     },
     {
-        inputs: [
-            {
-                internalType: "address",
-                name: "from",
-                type: "address",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-            {
-                internalType: "uint256",
-                name: "tokenId",
-                type: "uint256",
-            },
-        ],
-        name: "transferFrom",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                internalType: "address",
-                name: "newOwner",
-                type: "address",
-            },
-        ],
-        name: "transferOwnership",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
-                components: [
-                    {
-                        internalType: "address",
-                        name: "redeemer",
-                        type: "address",
-                    },
-                ],
-                internalType: "struct NFT.NFTVoucher",
-                name: "voucher",
-                type: "tuple",
-            },
-            {
-                internalType: "bytes",
-                name: "signature",
-                type: "bytes",
-            },
-            {
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-        ],
-        name: "whitelistMint",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
-    },
-    {
         inputs: [],
         name: "whitelistMintStartTime",
         outputs: [
@@ -856,14 +876,7 @@ export const ZZNFTABI = [
         stateMutability: "view",
         type: "function",
     },
-    {
-        inputs: [],
-        name: "withdraw",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
 ];
 
 export const ZZNftContractAddress =
-    "0x12d19a8aF9e02EAa8d3aCE9D549D41f3Cf5aA26e";
+    "0x269f15ff610f591b1c8b7dBF04F5bd61422bA5C4";

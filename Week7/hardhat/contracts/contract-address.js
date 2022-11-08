@@ -1,3 +1,3 @@
 module.exports = {
-    NFT: "0x12d19a8aF9e02EAa8d3aCE9D549D41f3Cf5aA26e",
+    NFT: "0x269f15ff610f591b1c8b7dBF04F5bd61422bA5C4",
 };

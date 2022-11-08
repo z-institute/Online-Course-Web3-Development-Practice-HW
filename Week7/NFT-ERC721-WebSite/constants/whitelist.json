@@ -1,8 +1,14 @@
 {
+    "0xcc40ee8eb43a8f8157daf37dbe4b7f14914aaf59": {
+        "voucher": {
+            "redeemer": "0xCc40ee8eB43A8f8157DAF37dBE4B7F14914AaF59"
+        },
+        "signature": "0x53a40844325422a8f217ffcff47cfbb7434f53f243be372fd44db7a70809ca8933744263c0fa90dda77aa021bdb43957ce38423cefd8d5c0375e1989330a280e1c"
+    },
     "0x1ae37f789102040afd9ee2865937399f24986448": {
         "voucher": {
             "redeemer": "0x1Ae37f789102040AfD9ee2865937399F24986448"
         },
-        "signature": "0x13d47a86a596358449f11d4b6c6be138e150c5f5ba92366ef311d12780aa2543035552c76dcf9f0e6c2a250c9cc2e699ae4d4124d91fae2ce486410b045803041b"
+        "signature": "0xb42bdec4ecd6d1820b6c46ece3047b176ca0f4d5e30414e6ebe2d38658e58a101996f5f46079e6f681044e3f5564ff64ebc41b8bdb7df75b9b7b88ebe54752fe1c"
     }
 }
