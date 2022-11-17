@@ -2,36 +2,6 @@ export const ZZNFTABI = [
     {
         inputs: [
             {
-                components: [
-                    {
-                        internalType: "address",
-                        name: "redeemer",
-                        type: "address",
-                    },
-                ],
-                internalType: "struct NFT.NFTVoucher",
-                name: "voucher",
-                type: "tuple",
-            },
-            {
-                internalType: "bytes",
-                name: "signature",
-                type: "bytes",
-            },
-            {
-                internalType: "address",
-                name: "to",
-                type: "address",
-            },
-        ],
-        name: "_verify",
-        outputs: [],
-        stateMutability: "nonpayable",
-        type: "function",
-    },
-    {
-        inputs: [
-            {
                 internalType: "string",
                 name: "_name",
                 type: "string",
@@ -539,6 +509,36 @@ export const ZZNFTABI = [
     {
         inputs: [
             {
+                components: [
+                    {
+                        internalType: "address",
+                        name: "redeemer",
+                        type: "address",
+                    },
+                ],
+                internalType: "struct NFT.NFTVoucher",
+                name: "voucher",
+                type: "tuple",
+            },
+            {
+                internalType: "bytes",
+                name: "signature",
+                type: "bytes",
+            },
+            {
+                internalType: "address",
+                name: "to",
+                type: "address",
+            },
+        ],
+        name: "_verify",
+        outputs: [],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [
+            {
                 internalType: "address",
                 name: "owner",
                 type: "address",
@@ -762,19 +762,6 @@ export const ZZNFTABI = [
     },
     {
         inputs: [],
-        name: "recoverSignAddr",
-        outputs: [
-            {
-                internalType: "address",
-                name: "",
-                type: "address",
-            },
-        ],
-        stateMutability: "view",
-        type: "function",
-    },
-    {
-        inputs: [],
         name: "reserver",
         outputs: [
             {
@@ -879,4 +866,4 @@ export const ZZNFTABI = [
 ];
 
 export const ZZNftContractAddress =
-    "0x269f15ff610f591b1c8b7dBF04F5bd61422bA5C4";
+    "0x02d45685365D3dBfbf05054A6158d72D2B83Cf1b";

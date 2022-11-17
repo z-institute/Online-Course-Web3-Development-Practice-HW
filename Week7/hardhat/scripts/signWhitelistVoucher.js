@@ -7,6 +7,7 @@ const VOUCHER_TYPE = {
 
 async function main() {
     const [signer] = await ethers.getSigners();
+    console.log("signer ", signer);
     // domain data
     const chainId = hre.network.config.chainId;
     console.log("chain ID:", chainId);
@@ -15,8 +16,9 @@ async function main() {
         console.log("[ERROR] contract address not set");
         return;
     }
+    console.log("contract address, ", contractAddr);
     const domainData = {
-        name: "NFT",
+        name: "ZZ NFT",
         version: "1",
         chainId: chainId,
         verifyingContract: contractAddr,
