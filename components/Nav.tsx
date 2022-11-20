@@ -21,7 +21,7 @@ import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 
-const Links: Array<String> = ["Z institute 5th Homework", "Token", "Board"];
+const Links: Array<String> = ["Z institute 6th week homework", "Token", "Board"];
 
 
 const NavLink = ({ children }: { children: ReactNode }) => (
@@ -34,7 +34,7 @@ const NavLink = ({ children }: { children: ReactNode }) => (
       bg: useColorModeValue("gray.200", "gray.700"),
     }}
     href={children?.toString().toLowerCase()}
-    fontSize="20px"
+    fontSize="20px"g
     style={{ fontWeight: "bold" }}
   >
     {children}
