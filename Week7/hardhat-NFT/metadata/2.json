@@ -1,0 +1,11 @@
+{
+  "name": "MyMintNFT#2",
+  "description": "MyMintNFT#2",
+  "image": "https://gateway.pinata.cloud/ipfs/QmcQTehHCj4YhczBBwwKXnxkLMufnDFX2ENWuLCjMdCHYY",
+  "attributes": [
+    {
+      "trait_type": "Status",
+      "value": "Test"
+    }
+  ]
+}
