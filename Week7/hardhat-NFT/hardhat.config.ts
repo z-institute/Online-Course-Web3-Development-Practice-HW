@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "@nomiclabs/hardhat-etherscan";
 
 require("dotenv").config();
 const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY;
