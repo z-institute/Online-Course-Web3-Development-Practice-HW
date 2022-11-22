@@ -1,0 +1,14 @@
+{
+  "0x21eb2c25ad1b5877e5b1f0bcbe51c0907e76e5b7": {
+    "voucher": {
+      "redeemer": "0x21Eb2c25Ad1B5877E5B1F0bcbe51c0907e76E5B7"
+    },
+    "signature": "0xb2e337726a94406a9e49f198e3a15b16e8222e3c1f69b9c2ca19ab18882efb750064ae72b7ff277eec231ebd9d52c4c0a8a13d67863f0d45269d8cedd38177671c"
+  },
+  "0xa1fe7ca38462b3567d4f915ef7c1b56938c251a4": {
+    "voucher": {
+      "redeemer": "0xa1fe7ca38462b3567d4f915ef7c1b56938c251a4"
+    },
+    "signature": "0x0872df0c02b3aec5a7ead4e270a9e7297cca34493be2ef69f753ec03cecf410e17414198b836ffd94b66951faff3eea54443b7e66acdf42a99b22a1775f34f261b"
+  }
+}
