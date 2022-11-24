@@ -1,13 +1,12 @@
-const { ethers, eth_signTypedData_v4 } = require("hardhat");
+const { ethers } = require("hardhat");
 const { writeFile, readFile } = require("fs/promises");
-const ethSigUtil = require("eth-sig-util");
 // const { NFTAddress, } = require("../constants/index");
 const VOUCHER_TYPE = {
   NFTVoucher: [{ name: "redeemer", type: "address" }],
 };
 
 async function main() {
-  const signer = await ethers.getSigners();
+  const [signer] = await ethers.getSigners();
   // domain data
   const chainId = hre.network.config.chainId;
   console.log("chain ID:", chainId);
@@ -16,8 +15,7 @@ async function main() {
     console.log("[ERROR] contract address not set");
     return;
   }
-  
-  const domainData = {
+  const domain = {
     name: "NFT",
     version: "1",
     chainId: chainId,
@@ -34,18 +32,8 @@ async function main() {
       whitelist.map(async (list) => {
         const struct = list.split(" ");
         const redeemer = struct[0];
-        const voucher = { redeemer }; 
-        const data = JSON.stringify({
-    types: {
-        EIP712Domain: domain,
-        Bid: bid,
-        Identity: identity,
-    },
-    domain: domainData,
-    primaryType: "Bid",
-    message: message
-});      n
-        const signature = await eth_signTypedData_v4(domainData, VOUCHER_TYPE, voucher);
+        const voucher = { redeemer };
+        const signature = await signer._signTypedData(domain, VOUCHER_TYPE, voucher);
 
         // if (sigMap.has(redeemer.toLowerCase())) {
         //   let origin = sigMap.get(redeemer.toLowerCase());
