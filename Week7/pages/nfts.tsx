@@ -36,6 +36,7 @@ import useAllowance from "../hooks/myToken/useAllowance";
 import useNFTMint from "../hooks/NFT/useNFTMint";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useDisclosure } from "@chakra-ui/react";
+import useListenTransfer from "../hooks/NFT/useListenTransfer"
 
 const NFT: NextPage = () => {
   // const userInfo = useGetUserInfo();
@@ -43,11 +44,12 @@ const NFT: NextPage = () => {
   // const balance = useBalanceOf();
   // const symbol = useSymbol();
   const [mintCount, setMintCount] = useState<number>(1);
-  const { mint, status, hash }: any = useNFTMint(mintCount);
+  const { mint, status, hash, tokenID }: any = useNFTMint(mintCount);
   // const { increaseAllowance, increaseStatus } = useIncreaseAllowance(amount);
   // const allowance: number = useAllowance(address, address);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
 
   useEffect(() => {
     if (status === "completed") {
@@ -134,6 +136,7 @@ const NFT: NextPage = () => {
                     >
                       Transactions Hash: {hash} <ExternalLinkIcon mx="2px" />
                     </Link>
+                    Your NFT tokenId : {tokenID}
                   </ModalBody>
 
                   <ModalFooter>
