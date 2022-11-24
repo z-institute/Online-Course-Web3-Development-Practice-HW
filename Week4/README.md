@@ -55,4 +55,4 @@ contract ChatRoom {
 }
 ```
 2. 提供部署完截圖 ![](./week4.png)
-3. 前端code [Z22096002](https://github.com/z-institute/Online-Course-Web3-Development-Practice-HW/tree/Z22096002/Week4)
+3. 前端code 於 chatroom 目錄下
