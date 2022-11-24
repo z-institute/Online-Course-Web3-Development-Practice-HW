@@ -15,7 +15,7 @@ async function main() {
     console.log("[ERROR] contract address not set");
     return;
   }
-  const domainData = {
+  const domain = {
     name: "NFT",
     version: "1",
     chainId: chainId,
@@ -32,12 +32,8 @@ async function main() {
       whitelist.map(async (list) => {
         const struct = list.split(" ");
         const redeemer = struct[0];
-        const voucher = { redeemer };
-        const signature = await signer._signTypedData(
-          domainData,
-          VOUCHER_TYPE,
-          voucher
-        );
+        const types = { redeemer }; 
+        const signature = await await signer._signTypedData(domain, types, value);
 
         // if (sigMap.has(redeemer.toLowerCase())) {
         //   let origin = sigMap.get(redeemer.toLowerCase());
@@ -78,7 +74,7 @@ async function main() {
   // );
   console.log("voucher count:", sigMap.size);
   await writeFile(
-    "frontend/src/whitelist.json",
+    "constants/NFTs/whitelist.json",
     JSON.stringify(Object.fromEntries(sigMap), null, 4)
   );
 }
