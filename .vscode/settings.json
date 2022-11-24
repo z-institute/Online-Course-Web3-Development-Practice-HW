@@ -1,0 +1,10 @@
+{
+  "terminal.integrated.fontSize": 12,
+  "editor.fontSize": 12,
+  "window.zoomLevel": 1.7,
+  "editor.tabSize": 2,
+  "[Log]": {
+    "editor.fontSize": 12
+  },
+  "liveServer.settings.port": 5501,
+}
