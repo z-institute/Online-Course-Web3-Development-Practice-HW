@@ -5,10 +5,9 @@ import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-// import { useEffect, useState } from "react";
 import NonSSRWrapper from '../pages/NonSSRWrapper';
 
-const ALCHEMY_PROVIDER_API_KEY = "_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC";
+const ALCHEMY_PROVIDER_API_KEY = "Da-2Ot_PmvmISYkxe74ryRO_uQ8fo6VJ";
 
 const { chains, provider } = configureChains(
   [chain.goerli],
@@ -16,7 +15,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'Home Work 4',
+  appName: 'Home Work 5',
   chains,
 });
 
@@ -27,11 +26,6 @@ const wagmiClient = createClient({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const [mounted, setMounted] = useState(false);
-
-  // useEffect(() => setMounted(true), []);
-  // if (!mounted) return null;
-
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
