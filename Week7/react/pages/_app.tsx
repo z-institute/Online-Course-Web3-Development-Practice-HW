@@ -21,7 +21,7 @@ const ALCHEMY_PROVIDER_API_KEY = "Da-2Ot_PmvmISYkxe74ryRO_uQ8fo6VJ";
 
 const { chains, provider } = configureChains(
   [chain.goerli],
-  [alchemyProvider({ apiKey: ALCHEMY_PROVIDER_API_KEY }), publicProvider()]
+  [alchemyProvider({ apiKey: ALCHEMY_PROVIDER_API_KEY })]
 );
 
 const { connectors } = getDefaultWallets({
