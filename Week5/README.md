@@ -38,3 +38,4 @@ contract Friends {
 }
 ```
 2. 提供部署完截圖 ![](./week5.png)
+3. 前端code 於 namecard 目錄下
