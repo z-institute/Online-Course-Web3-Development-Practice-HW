@@ -16,7 +16,6 @@ import Card from "../components/Card";
 import NFTCard from "../components/NFTCard";
 import useEnsData from "../hooks/useEns";
 import useImgColor from "../hooks/useImgColor";
-import { useEnsName } from "wagmi";
 
 import { Spinner } from "@chakra-ui/react";
 import { colorRawType } from "../types/colorRawType";
@@ -35,18 +34,12 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     console.log("ensData.ensName", ensData.ensName);
-    setIsFetching(!(ensData.ensName == finalDomainName));
+    setIsFetching(!(ensData.ensName == finalDomainName) && (finalDomainName != ""));
   }, [ensData, finalDomainName]);
 
   const setQuery = () => {
     setFinalDomainName(domainName);
   };
-
-  useEffect(() => {
-    setDomainName(ensData.ensName || "");
-    setFinalDomainName(ensData.ensName || "");
-    console.log("currentAddr", currentAddr);
-  }, [ensData, currentAddr]);
 
   useEffect(() => {
     setSortedColors(sortColors(imgColor));
