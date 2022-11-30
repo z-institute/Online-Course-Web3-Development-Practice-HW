@@ -1,0 +1,26 @@
+{
+    "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266": {
+        "voucher": {
+            "redeemer": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
+        },
+        "signature": "0xc71ace0d00b3633d5aafdb63811fe4ce9c3e5217f4ee62dec4d9a329eda9bd0b37e61de1930386926272cd3c9392b64c8168b86cd3b9cffc5880cef67ae91d0d1c"
+    },
+    "0x70997970c51812dc3a010c7d01b50e0d17dc79c8": {
+        "voucher": {
+            "redeemer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+        },
+        "signature": "0xe4e89d420f3258d66ad679f3bee32daa7a9aab1cc22a36fb234835489ec194092717463bba9ff82d16653cb0b36bc9de5aa3f394ef2c251c006bb116e1d1c3cb1c"
+    },
+    "0x5c4d2fe61d2cd52a391f2dbfe8ed5bae187f99be": {
+        "voucher": {
+            "redeemer": "0x5c4d2fe61d2cd52a391f2dbfe8ed5bae187f99be"
+        },
+        "signature": "0xe5a94c1724ffb9af83eae2da861b254eefccdb47711d890dd7d8ee62ea771bb431baf3e09189ebb33783b67c9c6dd940e3737a0c17f4ddecdb641c4b2e25b1921c"
+    },
+    "0x0278137e8e2c38111297c9991815507eb16eaf25": {
+        "voucher": {
+            "redeemer": "0x0278137e8E2C38111297c9991815507eB16eaf25"
+        },
+        "signature": "0xcf1bd2328400f0d1f1474236688ef5ceeee1556d4d5bd67aa09316da62faccff396b18c6baee9d21fc098cb242a8189baa757766e69ae560246958b9f27b63bf1b"
+    }
+}
